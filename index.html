@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조회수 수익 계산기</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f4f4f4; }
+    h1 { font-size: 28px; margin-bottom: 20px; }
+    input[type="number"] { padding: 10px; width: 250px; font-size: 16px; margin: 10px 0; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #result { margin-top: 20px; font-size: 20px; color: #333; }
+  </style>
+</head>
+<body>
+  <h1>📺 유튜브 쇼츠 수익 계산기</h1>
+  <p>예상 조회수를 입력하세요</p>
+  <input type="number" id="views" placeholder="예: 1000000">
+  <br>
+  <button onclick="calculateRevenue()">💸 수익 계산하기</button>
+  <div id="result"></div>
+
+  <script>
+    function calculateRevenue() {
+      const views = parseInt(document.getElementById('views').value);
+      if (isNaN(views) || views <= 0) {
+        document.getElementById('result').innerText = "조회수를 올바르게 입력해주세요.";
+        return;
+      }
+      const minRate = 0.005; // USD 기준
+      const maxRate = 0.02;
+      const minEarning = (views * minRate).toFixed(2);
+      const maxEarning = (views * maxRate).toFixed(2);
+      document.getElementById('result').innerText = `예상 수익: $${minEarning} ~ $${maxEarning} USD`;
+    }
+  </script>
+</body>
+</html>
